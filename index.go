@@ -6,6 +6,26 @@ import (
 	"strings"
 )
 
+func addIntegers(a int, b int) int {
+	return a + b
+}
+
+func showNumbers(numbers ...int) []int {
+	return numbers
+}
+
+type Person struct {
+	name   string
+	age    int
+	job    string
+	salary int
+}
+
+type Developer struct {
+	Person
+	isDeveloper bool
+}
+
 func main() {
 	fmt.Println("Hello Go")
 	fmt.Println("Same Same but different")
@@ -125,5 +145,77 @@ func main() {
 	myslice2 := []string{"Go", "Java", "Python", "C#"}
 	fmt.Println(len(myslice2))
 	fmt.Println(cap(myslice2))
+	fmt.Println(myslice2)
+
+	myslice2 = append(myslice2, "Javascript")
+	fmt.Println(myslice2)
+
+	numslice := make([]int, 5, 20)
+
+	fmt.Println(len(numslice))
+	fmt.Println(cap(numslice))
+
+	for i := 1; i <= 15; i++ {
+		numslice = append(numslice, i)
+	}
+
+	fmt.Println(numslice)
+
+	userInfo := map[string]int{
+		"Kumar":  22,
+		"Alex":   26,
+		"Martin": 21,
+	}
+
+	fmt.Println(userInfo)
+	fmt.Println(userInfo["Kumar"])
+	userInfo["Richard"] = 19
+	fmt.Println(userInfo)
+
+	var Employee Person
+
+	Employee.name = "Elliot"
+	Employee.age = 34
+	Employee.job = "Programmer"
+	Employee.salary = 60000
+
+	fmt.Println(Employee)
+
+	h := Person{
+		name:   "Peter",
+		age:    24,
+		job:    "Devops",
+		salary: 70000,
+	}
+
+	fmt.Println(h)
+
+	d := Developer{
+		Person: Person{
+			name:   "Charles",
+			age:    25,
+			job:    "Java developer",
+			salary: 95000,
+		},
+		isDeveloper: true,
+	}
+
+	fmt.Println(d)
+	fmt.Println(d.name, d.isDeveloper)
+
+	fmt.Println(addIntegers(7, 9))
+
+	fmt.Println(showNumbers(4, 7, 7, 3, 8))
+
+	mul := func(num1 int, num2 int) int {
+		return num1 * num2
+	}
+
+	res := mul(40, 20)
+	fmt.Println(res)
+
+	func() {
+		fmt.Println("Anon")
+	}()
 
 }
